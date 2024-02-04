@@ -1,1 +1,1 @@
-![Alt text](MVP.png?raw=true "Title")
+![MVP](MVP.png)
