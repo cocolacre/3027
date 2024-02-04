@@ -14,6 +14,9 @@ int main()
     std::cout << "Number of seconds since system startup: " << dwTickCount / 1000 << std::endl;
     std::cout << "Number of hours since system startup: " << dwTickCount / (3600*1000) << std::endl;
 
+    LASTINPUTINFO lii;
+    lii.cbSize = sizeof(LASTINPUTINFO);
+    std::cout << "lii.cbSize = " << lii.cbSize;
     return 0;
 
 }
