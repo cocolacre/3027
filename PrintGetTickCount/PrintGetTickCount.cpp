@@ -1,8 +1,20 @@
 // PrintGetTickCount.cpp : This file contains the 'main' function. Program execution begins and ends there.
 //
-
+#ifndef WIN32_LEAN_AND_MEAN
+#define WIN32_LEAN_AND_MEAN
+#endif
+// stackoverflow.com/questions/33306922/winsock2-h-compilation-errors
 #include <iostream>
 #include <windows.h>
+#include <winsock2.h>
+//#include <ws2tcpip.h>
+//#include <iphlpapi.h>
+#include <stdio.h>
+
+// stackoverflow.com/questions/33306922/winsock2-h-compilation-errors
+
+
+#pragma comment(lib, "ws2_32.lib")
 
 int main()
 {
@@ -23,7 +35,7 @@ int main()
     // Так что начнём с проверки, что функция вернула не 0, и если всё в порядке, то это
     // значит что в структуру LASTINPUTINFO была записана нужная информация, которую мы извлечём и обработаем.
 
-    Sleep(3000);
+    //Sleep(3000);
 
     if (GetLastInputInfo(&lii))
     {
@@ -34,8 +46,8 @@ int main()
         // теперь возьмём текущий tick count, и вычтем из него dwLastInputTickCount, что бы получить 
         // кол-во миллисекунд прошедших с последнего user-input (мышь и клавиатура) события.
         DWORD dwIdleTime = dwTickCount - dwLastInputTickCount;
-        std::cout << "dwIdleTime = (миллисекунд)" << dwIdleTime << std::endl;
-        std::cout << "dwIdleTime = (секунд)" << dwIdleTime / 1000 << std::endl;
+        std::cout << "dwIdleTime = (ms)" << dwIdleTime << std::endl;
+        std::cout << "dwIdleTime = (seconds)" << dwIdleTime / 1000 << std::endl;
         // Print the tick count since the last input event
 
     }
