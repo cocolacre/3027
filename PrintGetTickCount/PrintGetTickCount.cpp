@@ -12,7 +12,7 @@ int main()
     // Print the number of milliseconds since the system was started
     std::cout << "Number of milliseconds since system startup: " << dwTickCount << std::endl;
     std::cout << "Number of seconds since system startup: " << dwTickCount / 1000 << std::endl;
-    std::cout << "Number of seconds since system startup: " << dwTickCount / 1000 << std::endl;
+    std::cout << "Number of hours since system startup: " << dwTickCount / (3600*1000) << std::endl;
 
     return 0;
 }
