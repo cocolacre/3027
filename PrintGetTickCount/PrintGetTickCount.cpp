@@ -18,6 +18,19 @@
 
 int main()
 {
+
+    // Initialize Winsock
+    WSAData wsaData;
+    int iResult = WSAStartup(MAKEWORD(2, 2), &wsaData);
+    if (iResult != 0)
+    {
+        std::cout << "WSAStartup failed with error code: " << iResult << std::endl;
+        return 1;
+    }
+    else
+    {
+        std::cout << "Initialize Winsock (WSAStartup) succeded." << std::endl;
+    }
     // Get the current tick count
     DWORD dwTickCount = GetTickCount();
 
