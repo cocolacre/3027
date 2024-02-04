@@ -9,7 +9,7 @@ int main()
     // Get the current tick count
     DWORD dwTickCount = GetTickCount();
 
-    // Print the number of milliseconds since the system was started
+    // Print the number of milliseconds(seconds, hours) since the system was started
     std::cout << "Number of milliseconds since system startup: " << dwTickCount << std::endl;
     std::cout << "Number of seconds since system startup: " << dwTickCount / 1000 << std::endl;
     std::cout << "Number of hours since system startup: " << dwTickCount / (3600*1000) << std::endl;
@@ -17,7 +17,37 @@ int main()
     LASTINPUTINFO lii;
     lii.cbSize = sizeof(LASTINPUTINFO);
     std::cout << "lii.cbSize = " << lii.cbSize;
+
+    // https://learn.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-getlastinputinfo
+    //GetLastInputInfo : "If the function succeeds, the return value is nonzero."
+    // Так что начнём с проверки, что функция вернула не 0, и если всё в порядке, то это
+    // значит что в структуру LASTINPUTINFO была записана нужная информация, которую мы извлечём и обработаем.
+
+    Sleep(3000);
+
+    if (GetLastInputInfo(&lii))
+    {
+        // извлекаем из структуры LASTINPUTINFO кол-во миллисекунд (от старта системы до последнего события активности (ввода) пользователя (у которого запущена программа).
+        DWORD dwLastInputTickCount = lii.dwTime;
+        std::cout << "lii.dwTime = " << lii.dwTime << std::endl;
+        
+        // теперь возьмём текущий tick count, и вычтем из него dwLastInputTickCount, что бы получить 
+        // кол-во миллисекунд прошедших с последнего user-input (мышь и клавиатура) события.
+        DWORD dwIdleTime = dwTickCount - dwLastInputTickCount;
+        std::cout << "dwIdleTime = (миллисекунд)" << dwIdleTime << std::endl;
+        std::cout << "dwIdleTime = (секунд)" << dwIdleTime / 1000 << std::endl;
+        // Print the tick count since the last input event
+
+    }
+    else
+    {
+        // если же GetLastInputInfo вернула 0, то выведем сообщение об ошибке.
+        DWORD dwError = GetLastError();
+        std::cout << "GetLastInputInfo left behind following error code: " << dwError << std::endl;
+    }
+
     return 0;
+
 
 }
 
