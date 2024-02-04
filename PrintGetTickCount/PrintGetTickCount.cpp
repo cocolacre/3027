@@ -7,8 +7,8 @@
 #include <iostream>
 #include <windows.h>
 #include <winsock2.h>
-//#include <ws2tcpip.h>
-//#include <iphlpapi.h>
+#include <ws2tcpip.h>
+#include <iphlpapi.h>
 #include <stdio.h>
 
 // stackoverflow.com/questions/33306922/winsock2-h-compilation-errors
@@ -31,6 +31,69 @@ int main()
     {
         std::cout << "Initialize Winsock (WSAStartup) succeded." << std::endl;
     }
+    
+    // Create a socket
+    SOCKET sock = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
+    if (sock == INVALID_SOCKET)
+    {
+        std::cout << "socket failed with error code: " << WSAGetLastError() << std::endl;
+        WSACleanup();
+        return 1;
+    }
+    else
+    {
+        std::cout << "Socket succesfully created. " << std::endl;
+    }
+
+    sockaddr_in serverInfo;
+    serverInfo.sin_family = AF_INET;
+    serverInfo.sin_port = htons(13337); // ??
+    inet_pton(AF_INET, "127.0.0.1", &serverInfo.sin_addr);
+    iResult = connect(sock, (SOCKADDR*)&serverInfo, sizeof(serverInfo));
+    if (iResult == SOCKET_ERROR)
+    {
+        std::cout << "connect failed with error code: " << WSAGetLastError() << std::endl;
+        closesocket(sock);
+        WSACleanup();
+        return 1;
+    }
+    else
+    {
+        std::cout << "Succeded connecting to 127.0.0.1:13337." << std::endl;
+    }
+
+    // Send "hello from c++ client" to the server
+    const char* message = "Hello from C++ client";
+    iResult = send(sock, message, (int)strlen(message), 0);
+    if (iResult == SOCKET_ERROR)
+    {
+        std::cout << "send failed with error code: " << WSAGetLastError() << std::endl;
+        closesocket(sock);
+        WSACleanup();
+        return 1;
+    }
+    else
+    {
+        std::cout << "Succeded sending 'hello world' to 127.0.0.1:13337." << std::endl;
+    }
+
+    // Close the socket
+    iResult = closesocket(sock);
+    if (iResult == SOCKET_ERROR)
+    {
+        std::cout << "closesocket failed with error code: " << WSAGetLastError() << std::endl;
+        WSACleanup();
+        return 1;
+    }
+    else
+    {
+        std::cout << "Succeded in closing socket." << std::endl;
+    }
+
+
+    WSACleanup();
+
+
     // Get the current tick count
     DWORD dwTickCount = GetTickCount();
 
