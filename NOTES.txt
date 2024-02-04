@@ -1,0 +1,47 @@
+I am new to c++ and this is going to be my first learning project.
+
+
+<promts for BlackBox AI.>
+
+</promts for BlackBox AI.>
+
+
+
+
+
+
+
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\
+::C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\bin\Hostx64\x64\cl.exe
+
+cl /I "C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include" hello_world.cpp
+cl6464 /I "C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include" hello_world.cpp
+
+cl /I "C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include" /I "C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\atlmfc\include" /EHsc /Fe:hello_world.exe hello_world.cpp /link /LIBPATH:"C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\ATLMFC\lib\x64" /LIBPATH:"C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\lib\x64" libcmt.lib
+cl6464 /I "C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include" /I "C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\atlmfc\include" /EHsc /Fe:hello_world.exe hello_world.cpp /link /LIBPATH:"C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\ATLMFC\lib\x64" /LIBPATH:"C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\lib\x64" libcmt.lib
+
+
+
+
+
+
+
+
+
+
+
+GetTickCount
+
+
+Okay. Now we are going to write a simple C++ program, that calls WInAPI GetTickCount, and prints number of milliseconds that have elapsed since the system was started to stdout.
+We are using Visual Studio 2022 Community edition.
+
+
+
+
+
+
+Концепция Kaizen в японском означает постоянное улучшение или изменение для лучшего. Она является философией или подходом к управлению и продуктивности, который подчеркивает постоянные, небольшие улучшения в процессах, системах и результатах. Цель Kaizen - создать культуру постоянного обучения и улучшения, где каждый может идентифицировать и решать проблемы, делиться идеями и сотрудничать для поиска решений.В контексте музыкального исполнителя Kaizen Flow слово Kaizen означает постоянное улучшение или изменение для лучшего. Возможно, что Kaizen было выбрано для его ассоциации с концепцией постоянного улучшения и роста.
+Слово Flow в имени исполнителя Kaizen Flow может также иметь определенное значение или смысл. Возможно, что Flow было выбрано для его ассоциации с состоянием высокой концентрации, творчества и удовольствия, которое может возникнуть во время деятельности или задачи.
+В целом, Kaizen Flow означает фокус на росте, улучшении и положительной энергии, что может отражаться в музыке исполнителя. Возможно, что Kaizen было выбрано для отражения его приверженности улучшению и росту, или желания создать положительную и вдохновляющую музыкальную атмосферу для его аудитории.
