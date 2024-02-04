@@ -1,6 +1,6 @@
 *.vsidx
 *.opendb
-
+**/*/.vs/
 **/FileContentIndex
 **/v17
 **/.vs/
